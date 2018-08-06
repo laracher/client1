@@ -1,0 +1,34 @@
+<div class="col-md-6">
+    <h2 class="text-center">Добавить клиента</h2>
+  <form>
+
+    <div class="form-group">
+      <label for="id">№:</label>
+      <input type="number" [(ngModel)]="user.id" placeholder="Name" 
+          name="id" class="form-control" id="id">
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">Имя клиента:</label>
+      <input type="text" [(ngModel)]="user.firstName" placeholder="Name" 
+          name="firstName" class="form-control" id="firstName">
+    </div>
+  
+    <div class="form-group">
+      <label for="pasportNumber">Номер паспорта:</label>
+     <input type="number" [(ngModel)]="user.pasportNumber" placeholder="000000" 
+        name="pasportNumber" class="form-control" id="pasportNumber">
+    </div>
+
+    <div class="form-group">
+      <label for="riskGroup">Группа риска:</label>
+      <input type="text" [(ngModel)]="user.riskGroup" placeholder="Risk group" 
+          name="riskGroup" class="form-control" id="riskGroup">
+    </div>
+  
+    <button class="btn btn-success" (click)="createUser()">Создать</button>
+    <br />
+    <a routerLink = "/users">Показать список клиентов</a>
+  </form>
+  </div>
+  
