@@ -2,7 +2,7 @@ import { Component, ViewChild, TemplateRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from '../models/client.model';
-import { UserService } from './client.service';
+import { UserService } from '../http.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -13,27 +13,23 @@ import { Subscription } from 'rxjs';
 })
 export class ClientInfoComponent implements OnInit
 {
-    //типы шаблонов
-    @ViewChild('readOnlyTemplate') readOnlyTemplate: TemplateRef<any>;
-    @ViewChild('editTemplate') editTemplate: TemplateRef<any>;
-
     id: number;
     editedUser: User;
     private routeSubscription: Subscription;  
-    // вызов редактора клиента
-    // editor = this.editClient(new User(0, '','', 0));
 
-    constructor(private serv: UserService, private route: ActivatedRoute) 
+    constructor(
+        private serv: UserService, 
+        private route: ActivatedRoute,
+        private router: Router) 
     {
         this.routeSubscription = route.queryParams.subscribe(
             params=>this.id=params['id']);
-     }
+    }
 
     ngOnInit() 
     {
-        this.editedUser = new User(0, '', '', 0);
+        this.editedUser = new User(0, '', new Date(), '', 0);
         this.loadClient();
-
     }
 
     loadClient()
@@ -42,54 +38,40 @@ export class ClientInfoComponent implements OnInit
         {
             this.editedUser = data;
         });
+        this.editClient(this.editedUser);
     }
 
     editClient(client: User) 
     {
         this.editedUser = new User
         (
-            client.id, client.firstName, 
+            client.id, client.firstName, client.dob,
             client.riskGroup, client.pasportNumber
         );
     }
-
-    // загружаем один из двух шаблонов
-    loadTemplate(user: User) 
-    {
-        if (this.editedUser && this.editedUser.id == user.id) {
-            return this.editTemplate;
-        } else {
-            return this.readOnlyTemplate;
-        }
-    }
-
-    // loadTemplate() 
-    // {
-    //     if (!this.editor) {
-    //         return this.readOnlyTemplate;
-            
-    //     } else {
-    //         return this.editTemplate;
-            
-    //     }
-    // }
-
    
-    saveClient(){
-        this.serv.createUser(this.editedUser).subscribe(()=>{this.loadClient();});
+    saveClient()
+    {
+        this.serv.updateClient(this.id, this.editedUser).subscribe(data=>
+        {
+            this.loadClient();
+        });
+        this.editedUser = null;
+
+        this.router.navigate(
+            ['/users']
+        );
     }
     
-}
     // отмена редактирования
-    // cancel() 
-    // {
-    // // если отмена при добавлении, удаляем последнюю запись
-    //     // if (this.isNewRecord) {
-    //     //     this.users.pop();
-    //     //     this.isNewRecord = false;
-    //     // }
-    //     this.editedUser = null;
-    // }
+    cancel() 
+    {
+        this.editedUser = null;
 
+        this.router.navigate(
+            ['/users']
+        );
+    }
+}
 
 

@@ -6,6 +6,7 @@
       <tr>
         <th class="hidden">№</th>
         <th>Имя</th>
+        <th>Дата рождения</th>
         <th>Группа риска</th>
         <th>Номер паспорта</th>
         <th>Действие</th>
@@ -16,11 +17,16 @@
       <tr *ngFor="let user of users">
         <td class="hidden">{{user.id}}</td>
         <td>{{user.firstName}}</td>
+        <td>{{user.dob | date}}</td>
         <td>{{user.riskGroup}}</td>
         <td>{{user.pasportNumber}}</td>
         <td>
-            <input type="button" value="Информация" class="btn btn-warning" (click)="goClientInfo(user)" />
-            <button class="btn btn-danger" (click)="deleteUser(user)">Удалить</button>
+            <input type="button" value="Изменить" class="btn btn-warning m-a-1" 
+                (click)="goClientInfo(user)" />
+            <!-- <button class="btn btn-danger" (click)="deleteUser(user)">Удалить</button> -->
+            <input type="button" value="Удалить" class="btn btn-danger m-a-1" 
+                (click)="deleteUser(user)" />
+            
         </td>
       </tr>
       </tbody>

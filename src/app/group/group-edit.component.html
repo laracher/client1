@@ -1,0 +1,28 @@
+<br />
+<h2>Редактирование группы риска</h2>
+
+<div class="form-group">
+
+    <label>Id</label>
+    <input type="number" [(ngModel)]="editedGroup.id" readonly disabled  
+        class="form-control" /><br />
+                
+    <label>Название</label><br />
+    <input type="string" [(ngModel)]="editedGroup.groupName"  
+        class="form-control" /><br />
+               
+    <label>Нижний предел</label><br />
+    <input type="number" [(ngModel)]="editedGroup.lowerLimit"  
+        class="form-control" /><br />
+                
+    <label>Верхний предел</label><br />
+    <input type="number" [(ngModel)]="editedGroup.upperLimit"  
+        class="form-control" /><br />
+        
+    <button class="btn btn-success m-a-1" (click) = "saveGroup()">
+        Сохранить изменения
+    </button>
+    <button class="btn btn-warning m-a-1" (click) = "cancel()">
+        Отмена
+    </button>
+</div>

@@ -1,0 +1,27 @@
+<div class="col-md-6">
+    <h2>Список групп риска</h2>
+        
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hidden">№</th>
+            <th>Название</th>
+            <th>Нижний предел</th>
+            <th>Верхний предел</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let group of groups">
+            <td class="hidden">{{group.id}}</td>
+            <td>{{group.groupName}}</td>
+            <td>{{group.lowerLimit}}</td>
+            <td>{{group.upperLimit}}</td>
+            <td>
+                <input type="button" value="Изменить" class="btn btn-warning m-a-1" 
+                    (click)="goGroupEdit(group)" />    
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>

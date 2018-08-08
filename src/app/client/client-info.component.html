@@ -1,54 +1,35 @@
 <br />
 <h2>Информация о клиенте</h2>
 
-<ng-template [ngTemplateOutlet]="loadTemplate()" >
-</ng-template>
-
-<ng-template #readOnlyTemplate>
-        <h2>читать</h2>
 <div class="form-group">
 
-        <label>Id</label>
-        <input type="string" [(ngModel)]="editedUser.id" readonly disabled 
-            class="form-control" /><br />
-        
-        <label>Имя</label><br />
-        <input type="string" [(ngModel)]="editedUser.firstName" readonly disabled 
-            class="form-control" /><br />
-       
-        <label>Группа риска</label><br />
-        <input type="string" [(ngModel)]="editedUser.riskGroup" readonly disabled 
-            class="form-control" /><br />
-        
-        <label>Номер паспорта</label><br />
-        <input type="string" [(ngModel)]="editedUser.pasportNumber" readonly disabled 
-            class="form-control" /><br />
-
-        <button class="btn btn-warning" (click) = "editClient(client)">Изменить</button>
-    </div>
-</ng-template>    
-
-<ng-template #editTemplate>
-    <h2>редактор</h2>
-        <div class="form-group">
-        
-                <label>Id</label>
-                <input type="string" [(ngModel)]="editedUser.id"  
-                    class="form-control" /><br />
+    <label>Id</label>
+    <input type="string" [(ngModel)]="editedUser.id" readonly disabled  
+        class="form-control" /><br />
                 
-                <label>Имя</label><br />
-                <input type="string" [(ngModel)]="editedUser.firstName"  
-                    class="form-control" /><br />
+    <label>Имя</label><br />
+    <input type="string" [(ngModel)]="editedUser.firstName"  
+        class="form-control" /><br />
+
+    <label>Дата рождения</label><br />
+    <input type="date" 
+        [(ngModel)]="editedUser.dob" 
+        
+        class="form-control" /><br />
                
-                <label>Группа риска</label><br />
-                <input type="string" [(ngModel)]="editedUser.riskGroup"  
-                    class="form-control" /><br />
+    <label>Группа риска</label><br />
+    <input type="string" [(ngModel)]="editedUser.riskGroup"  
+        class="form-control" /><br />
                 
-                <label>Номер паспорта</label><br />
-                <input type="string" [(ngModel)]="editedUser.pasportNumber"  
-                    class="form-control" /><br />
+    <label>Номер паспорта</label><br />
+    <input type="string" [(ngModel)]="editedUser.pasportNumber"  
+        class="form-control" /><br />
         
-                <button class="btn btn-warning" (click) = "editClient(client)">Изменить</button>
-            </div>
-</ng-template>  
+    <button class="btn btn-success m-a-1" (click) = "saveClient()">
+        Сохранить изменения
+    </button>
+    <button class="btn btn-warning m-a-1" (click) = "cancel()">
+        Отмена
+    </button>
+</div>
 

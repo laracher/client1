@@ -4,7 +4,7 @@
 
     <div class="form-group">
       <label for="id">№:</label>
-      <input type="number" [(ngModel)]="user.id" placeholder="Name" 
+      <input type="number" [(ngModel)]="user.id" placeholder="0" 
           name="id" class="form-control" id="id">
     </div>
 
@@ -13,11 +13,11 @@
       <input type="text" [(ngModel)]="user.firstName" placeholder="Name" 
           name="firstName" class="form-control" id="firstName">
     </div>
-  
+
     <div class="form-group">
-      <label for="pasportNumber">Номер паспорта:</label>
-     <input type="number" [(ngModel)]="user.pasportNumber" placeholder="000000" 
-        name="pasportNumber" class="form-control" id="pasportNumber">
+        <label for="dob">Дата рождения:</label>
+        <input type="text" [(ngModel)]="user.dob" placeholder="dob" 
+            name="dob" class="form-control" id="dob">
     </div>
 
     <div class="form-group">
@@ -25,10 +25,18 @@
       <input type="text" [(ngModel)]="user.riskGroup" placeholder="Risk group" 
           name="riskGroup" class="form-control" id="riskGroup">
     </div>
+
+    <div class="form-group">
+        <label for="pasportNumber">Номер паспорта:</label>
+       <input type="number" [(ngModel)]="user.pasportNumber" placeholder="000000" 
+          name="pasportNumber" class="form-control" id="pasportNumber">
+    </div>
   
-    <button class="btn btn-success" (click)="createUser()">Создать</button>
-    <br />
-    <a routerLink = "/users">Показать список клиентов</a>
+    <button class="btn btn-success m-a-1" (click)="createUser()">Создать</button>
+    <button class="btn btn-warning m-a-1" (click)="cancel()">Отмена</button>
+
+    <a class="btn btn-secondary" (click)="goToUsers()">Показать список клиентов</a>
+
   </form>
   </div>
   
