@@ -16,14 +16,21 @@
 
     <div class="form-group">
         <label for="dob">Дата рождения:</label>
-        <input type="text" [(ngModel)]="user.dob" placeholder="dob" 
+        <input type="date" [(ngModel)]="user.dob" placeholder="dob" 
             name="dob" class="form-control" id="dob">
     </div>
 
     <div class="form-group">
       <label for="riskGroup">Группа риска:</label>
       <input type="text" [(ngModel)]="user.riskGroup" placeholder="Risk group" 
-          name="riskGroup" class="form-control" id="riskGroup">
+        name="riskGroup" class="form-control" id="riskGroup" list = "group">
+        <datalist id = "group">
+            <option value="Первая">
+            <option value="Вторая">
+            <option value="Третья">
+            <option value="Четвертая">
+            <option value="Пятая">
+        </datalist>
     </div>
 
     <div class="form-group">

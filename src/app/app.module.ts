@@ -11,6 +11,7 @@ import {AddUserComponent} from './client/add-client.component';
 import { ClientInfoComponent } from './client/client-info.component';
 import { GroupComponent } from './group/group.component';
 import { GroupEditComponent } from './group/group-edit.component';
+// import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({

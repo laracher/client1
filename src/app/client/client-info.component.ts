@@ -5,6 +5,8 @@ import { User } from '../models/client.model';
 import { UserService } from '../http.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Group } from '../models/group.model';
+import { History } from '../models/history.model';
 
 @Component
 ({
@@ -15,6 +17,11 @@ export class ClientInfoComponent implements OnInit
 {
     id: number;
     editedUser: User;
+    date: Date;
+    selectGroup: number;
+    groups: Array<Group>;
+    historyChange: Array<History>;
+
     private routeSubscription: Subscription;  
 
     constructor(
@@ -29,6 +36,8 @@ export class ClientInfoComponent implements OnInit
     ngOnInit() 
     {
         this.editedUser = new User(0, '', new Date(), '', 0);
+        // this.groups = new Array<Group>();
+        // this.historyChange = new Array<History>();
         this.loadClient();
     }
 
@@ -37,8 +46,11 @@ export class ClientInfoComponent implements OnInit
         this.serv.getClient(this.id).subscribe((data: User) =>
         {
             this.editedUser = data;
+            // this.date = new Date(this.editedUser.dob);
         });
-        this.editClient(this.editedUser);
+        this.editClient(this.editedUser); //
+        // this.serv.getGroups().subscribe((data: Group[]) => (this.groups = data));
+        // this.serv.getC
     }
 
     editClient(client: User) 

@@ -31,7 +31,7 @@ export class UserService
 
   public createUser(user)    
   {
-    return this.http.post<User>(this.url + 'clients/add', user);
+    return this.http.post<User>(this.url + 'clients/save', user);
   }
 
   //метод http.delete(url) не работает
@@ -43,7 +43,7 @@ export class UserService
   updateClient(id: number, user: User)
   {
       const urlParams = new HttpParams().set("id", id.toString());
-      return this.http.post(this.url + 'clients/add', user, 
+      return this.http.post(this.url + 'clients/save', user, 
         { params: urlParams });
   }
 

@@ -13,12 +13,19 @@
 
     <label>Дата рождения</label><br />
     <input type="date" 
-        [(ngModel)]="editedUser.dob" 
+        [(ngModel)]="editedUser.dob"  
         class="form-control" /><br />
                
     <label>Группа риска</label><br />
     <input type="string" [(ngModel)]="editedUser.riskGroup"  
-        class="form-control" /><br />
+        class="form-control" list = "group"/><br />
+        <datalist id = "group">
+            <option value="Первая">
+            <option value="Вторая">
+            <option value="Третья">
+            <option value="Четвертая">
+            <option value="Пятая">
+        </datalist>
                 
     <label>Номер паспорта</label><br />
     <input type="string" [(ngModel)]="editedUser.pasportNumber"  
@@ -31,4 +38,10 @@
         Отмена
     </button>
 </div>
+
+<!-- <div>
+    <app-history></app-history>
+</div> -->
+
+
 
